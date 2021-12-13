@@ -1,6 +1,9 @@
 # List of tools for phylogenetic analysis
 
+The following scripts were developed by Python 3.8.
+
 ### ConcatFas.py
+
 A script to concatenate multiple fasta files.
 
 Usage: python ConcatFas.py *input_file*
@@ -16,6 +19,10 @@ Usage: python ConvPart.py *input_file*
 
 Note that some information (e.g., substitution model) are ignored, when converting from nexus to raxml style. 
 
+### GBstrip.py
+A script to extract each gene (strictly, cds, ribosomal RNA, and transfer RNA) sequence from a GenBank file. This script can treat a GenBank file containing multiple accessions, and separate into output files by each accession.
 
-## Contributor(s)
+Usage: python GBstrip.py *input_file*
+
+## Contributor
 ### Ryosuke Kakehashi
