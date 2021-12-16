@@ -29,18 +29,24 @@ with open(args.input, encoding='utf-8') as f:
 			org = line.strip().lstrip("ORGANISM").strip().replace(' ', '_')
 		elif line.strip().startswith("CDS"):
 			reg = line.strip().lstrip("CDS").strip().lstrip("complement(").rstrip(")").split("..")
-			regst.append(reg[0])
-			regen.append(reg[1])
+			reg0 = re.sub(r'\D', '', reg[0])
+			reg1 = re.sub(r'\D', '', reg[1])
+			regst.append(reg0)
+			regen.append(reg1)
 			cds = 1
 		elif line.strip().startswith("rRNA"):
 			reg = line.strip().lstrip("rRNA").strip().lstrip("complement(").rstrip(")").split("..")
-			regst.append(reg[0])
-			regen.append(reg[1])
+			reg0 = re.sub(r'\D', '', reg[0])
+			reg1 = re.sub(r'\D', '', reg[1])
+			regst.append(reg0)
+			regen.append(reg1)
 			rrn = 1
 		elif line.strip().startswith("tRNA"):
 			reg = line.strip().lstrip("tRNA").strip().lstrip("complement(").rstrip(")").split("..")
-			regst.append(reg[0])
-			regen.append(reg[1])
+			reg0 = re.sub(r'\D', '', reg[0])
+			reg1 = re.sub(r'\D', '', reg[1])
+			regst.append(reg0)
+			regen.append(reg1)
 			trn = 1
 		elif line.strip().startswith("/gene"):
 			if cds == 1:
@@ -77,4 +83,4 @@ with open(args.input, encoding='utf-8') as f:
 			out = []
 			lst.append(accs)
 		else:
-			continue	
+			continue

@@ -24,5 +24,10 @@ A script to extract each gene (strictly, cds, ribosomal RNA, and transfer RNA) s
 
 Usage: python GBstrip.py *input_file*
 
+### SeqSplitter.py
+A script to divide a fasta file into separate partition files according to the partition file. The partition file with RAxML style is acceptable.
+
+Usage: python SeqSplitter.py *input_fasta_file* -p *input_partition_file*
+
 ## Contributor
 ### Ryosuke Kakehashi

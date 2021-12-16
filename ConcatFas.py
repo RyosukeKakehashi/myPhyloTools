@@ -78,7 +78,7 @@ if args.part:
 	part = ""
 	for fi, length in zip(filelist, fileslist):
 		seqlength = len(length[1])
-		part += fi + " = " + str(tlen + 1) + "-" + str(tlen + seqlength) + ";\n"
+		part += "DNA, " + fi + " = " + str(tlen + 1) + "-" + str(tlen + seqlength) + "\n"
 		tlen += seqlength
 
 	outpart = args.output + ".partition"
