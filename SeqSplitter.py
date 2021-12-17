@@ -2,6 +2,7 @@
 
 import argparse
 import re
+import sys
 
 parser = argparse.ArgumentParser(description='This script separates a fasta file according to a partition file. A partition file with RAxML style is acceptable.')
 parser.add_argument('input', help='specify a name of fasta file.')
@@ -16,6 +17,9 @@ with open(args.input, mode='r') as f:
     seqs = []
     for l in filelist:
         if l.startswith('>'):
+            if re.compile('\W').search(l.lstrip('>')):
+                print('Error. Only numbers, alphabets and underscores are acceptable for sequence name!')
+                sys.exit()
             seqname.append(l.strip())
         else:
             seqs.append(l.strip())
