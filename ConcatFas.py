@@ -24,6 +24,9 @@ for l in filelist:
 		fileslist.append(f.read())
 
 for i, l in enumerate(fileslist):
+	if re.compile('\W').search(l.lstrip('>')):
+		print('Error. Only numbers, alphabets and underscores are acceptable for sequence name!')
+		sys.exit()
 	tmp = re.sub('(>\w+)\n', r'\1@', l)
 	fileslist[i] = tmp.replace(' ', '').replace('\n', '').replace('>', '\n>').strip().replace('@', '\n').split('\n')
 
