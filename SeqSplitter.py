@@ -33,25 +33,27 @@ with open(args.part, mode='r') as f:
         partnamlst.append(partnam.strip())
         partreg = tmp[1].replace('\\', '%').strip()
         cont1 = re.findall('\d+-\d+%3', partreg)
-        del_cont1 = re.sub(',* *\d+-\d+%3,* *', '', partreg)
+        del_cont1 = re.sub(r',* *\d+-\d+%3,* *', '', partreg)
         cont2 = re.findall('\d+-\d+', del_cont1)
-        del_cont2 = re.sub(',* *\d+-\d+,* *', '', del_cont1)
+        del_cont2 = re.sub(r',* *\d+-\d+,* *', '', del_cont1)
+
         if len(cont1) != 0:
             cont1txt = ''
             for m in cont1:
                 rang = m.rstrip('%3').split('-')
                 ranglist = list(range(int(rang[0]), int(rang[1]) + 1, 3))
-                cont1txt += ','.join(map(str, ranglist))
+                cont1txt += ',' + ','.join(map(str, ranglist))
             del_cont2 += ',' + cont1txt
         if len(cont2) != 0:
             cont2txt = ''
             for m in cont2:
                 rang = m.split('-')
                 ranglist = list(range(int(rang[0]), int(rang[1]) + 1))
-                cont2txt += ','.join(map(str, ranglist))
+                cont2txt += ',' + ','.join(map(str, ranglist))
             del_cont2 += ','+ cont2txt
 
         part[i] = del_cont2
+
 
 s = ''
 for i, l in enumerate(seqs):
