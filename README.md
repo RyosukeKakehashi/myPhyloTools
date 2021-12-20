@@ -29,5 +29,16 @@ A script to divide a fasta file into separate partition files according to the p
 
 Usage: python SeqSplitter.py *input_fasta_file* -p *input_partition_file*
 
+### HomogeneityTest.py
+A script to test for compositional homogeneity of characters using chi-square test.
+
+Usage: python HomogeneityTest.py *input_fasta_file*
+
+This script implements two modes of chi-square test: 1) comparing all sequences at once (default mode), and 2) comparing each sequence with the overall composition (by adding an option "-m p"). In default, this script treat sequence characters as nucleotides. When testing amino acid sequences, users need to add a option "-t a". Note that ambiguous characters (e.g., N, R, Y etc. in nucleotides) are ignored in this test.
+
+This script requires the following package:
+
+- scipy
+
 ## Contributor
 ### Ryosuke Kakehashi
